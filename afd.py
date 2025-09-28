@@ -18,7 +18,9 @@ q0 = "q0"
 F = {"q_normal", "q_n"}
 
 # Função de transição δ
+
 # Explicação dos estados:
+
 # q0: estado inicial
 # q_normal: estado normal (qualquer letra exceto n acabou de ser lida)
 # q_n: acabou de ler 'n' (precisa verificar se próxima é b ou p)
@@ -66,7 +68,7 @@ def simular(cadeia: str) -> bool:
     
     for i, simbolo in enumerate(cadeia):
         if simbolo not in Sigma:
-            print(f"❌ Símbolo inválido '{simbolo}' na posição {i}. Rejeitando...")
+            print(f"Símbolo inválido '{simbolo}' na posição {i}. Rejeitando...")
             return False
         
         estado_anterior = estado_atual
@@ -76,15 +78,15 @@ def simular(cadeia: str) -> bool:
         
         # Se chegou no estado morto, pode parar
         if estado_atual == "q_dead":
-            print("💀 Chegou ao estado morto (n seguido de b ou p)")
+            print("Chegou ao estado morto (n seguido de b ou p)")
             break
     
     # Aceita se terminar em um estado final
     if estado_atual in F:
-        print(f"✅ Cadeia ACEITA! Estado final: {estado_atual}")
+        print(f"Cadeia ACEITA! Estado final: {estado_atual}")
         return True
     else:
-        print(f"❌ Cadeia REJEITADA. Estado final: {estado_atual}")
+        print(f"Cadeia REJEITADA. Estado final: {estado_atual}")
         return False
 
 def testar_exemplos():
@@ -110,19 +112,19 @@ def testar_exemplos():
         "inpe"       # i-n-p-e (n antes de p - ERRO!)
     ]
     
-    print("\n🟢 Palavras que DEVEM ser aceitas:")
+    print("\nPalavras que DEVEM ser aceitas:")
     for palavra in aceitas:
         resultado = simular(palavra)
         print("-" * 50)
     
-    print("\n🔴 Palavras que DEVEM ser rejeitadas:")
+    print("\nPalavras que DEVEM ser rejeitadas:")
     for palavra in rejeitadas:
         resultado = simular(palavra)
         print("-" * 50)
 
 def main():
     """Função principal com loop interativo"""
-    print("🤖 AUTÔMATO FINITO - LEITOR DE PALAVRAS")
+    print("AUTÔMATO FINITO - LEITOR DE PALAVRAS")
     print("="*50)
     print("Alfabeto permitido: a, e, i, o, u, b, p, m, n")
     print("Regra: 'n' não pode vir imediatamente antes de 'b' ou 'p'")
@@ -145,13 +147,13 @@ def main():
                 print(f"RESULTADO: {'ACEITA' if resultado else 'REJEITADA'}")
                 print("="*30)
             else:
-                print("❌ Entrada vazia!")
+                print("Entrada vazia!")
                 
         elif opcao == "2":
             testar_exemplos()
             
         elif opcao == "3":
-            print("\n📋 DEFINIÇÃO FORMAL DO AUTÔMATO:")
+            print("\nDEFINIÇÃO FORMAL DO AUTÔMATO:")
             print(f"Q (Estados): {Q}")
             print(f"Σ (Alfabeto): {Sigma}")
             print(f"q₀ (Estado inicial): {q0}")
@@ -161,11 +163,11 @@ def main():
                 print(f"  {estado}: {transicoes}")
                 
         elif opcao == "0":
-            print("👋 Tchau! Obrigado por usar o autômato!")
+            print("Tchau! Obrigado por usar o autômato!")
             break
             
         else:
-            print("❌ Opção inválida! Tente novamente.")
+            print("Opção inválida! Tente novamente.")
 
 if __name__ == "__main__":
     main()
